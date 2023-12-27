@@ -1,7 +1,7 @@
-const ProductCard = () => {
+const ProductCard = ({ data, ind}) => {
   return (
     <div className="product-card-1 cursor-pointer w-full flex flex-col gap-4 rounded aspect-video p-6 tracking-widest">
-      <h1 className="text-2xl">Falcone 1</h1>
+      <h1 className="text-2xl">{`${data?.rocketName}`}</h1>
       <div className="flex gap-6 text-gray-200">
         <span>Liquid Oxygen</span>
         <span>RP-1 Kerosene</span>
