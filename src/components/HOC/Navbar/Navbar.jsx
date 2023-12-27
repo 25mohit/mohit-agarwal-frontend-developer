@@ -1,8 +1,11 @@
-import React from 'react'
+import spaceXLogo from "../../../assets/spaceX-logo.png"
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <nav className="navbar fixed px-10 flex items-center justify-between text-white">
+      <img src={spaceXLogo} alt="SpaceX Logo" loading="lazy" className="w-72 cursor-pointer"/>
+      <p>ad</p>
+    </nav>
   )
 }
 

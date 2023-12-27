@@ -2,7 +2,7 @@ import React from 'react'
 
 const ScreenLayout = () => {
   return (
-    <div>ScreenLayout</div>
+    <section className='h-screen'>ScreenLayout</section>
   )
 }
 

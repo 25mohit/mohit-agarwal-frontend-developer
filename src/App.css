@@ -1,3 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.navbar{
+    height: var(--navbar-height);
+}
