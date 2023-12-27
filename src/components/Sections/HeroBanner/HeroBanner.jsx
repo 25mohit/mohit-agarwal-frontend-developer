@@ -1,6 +1,6 @@
 import React from 'react'
 import ScreenLayout from '../../Layout/ScreenLayout/ScreenLayout'
-import Button from '../../Common/Button/Button'
+import Button from '../../HOC/Button/Button'
 import rocketImage from "../../../assets/images/space-rocket.png"
 import DownArrow from '../../HOC/Icons/DownArrow'
 
@@ -16,9 +16,9 @@ const HeroBanner = () => {
         <div className="hero-image w-2/5 flex justify-center">
             <img src={rocketImage} alt="Firing Rocket Image" loading='lazy' className='w-64'/>
         </div>
-      <footer className='absolute bottom-4 cursor-pointer inset-x-2/4'>
-        <DownArrow className="w-10"/>
-      </footer>
+        <footer className='absolute bottom-4 cursor-pointer inset-x-2/4'>
+          <DownArrow className="w-10"/>
+        </footer>
     </ScreenLayout>
   )
 }

@@ -8,3 +8,17 @@
 .button{
     background-color: #88a9c157;
 }
+.banner-img-container{
+    height: 100vh;
+    width: 100vw;
+    /* overflow: hidden; */
+}
+.banner-img-container{
+    height: 100vh; /* Adjust as needed */
+    width: 100vw;
+    background-image: url('./assets/images/section-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
