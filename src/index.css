@@ -4,4 +4,6 @@
 *{
     box-sizing: border-box;
     --navbar-height: 8rem;
+    --padding-x: 4rem;
+    font-family: 'Monda', sans-serif;
 }

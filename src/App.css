@@ -1,3 +1,10 @@
 .navbar{
     height: var(--navbar-height);
+    padding: 0 var(--padding-x);
+}
+.screen-layout{
+    padding: 0 var(--padding-x);
+}
+.button{
+    background-color: #88a9c157;
 }

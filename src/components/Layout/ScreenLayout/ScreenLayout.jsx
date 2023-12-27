@@ -1,8 +1,6 @@
-import React from 'react'
-
-const ScreenLayout = () => {
+const ScreenLayout = props => {
   return (
-    <section className='h-screen'>ScreenLayout</section>
+    <section className='h-screen flex items-center screen-layout'>{props.children}</section>
   )
 }
 

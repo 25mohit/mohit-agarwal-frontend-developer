@@ -7,7 +7,7 @@ import HeroBanner from "./components/Sections/HeroBanner/HeroBanner"
 function App() {
 
   return (
-    <div className="bg-black">
+    <div className="bg-black text-white">
       <Navbar />
       <HeroBanner />
       <Footer />
