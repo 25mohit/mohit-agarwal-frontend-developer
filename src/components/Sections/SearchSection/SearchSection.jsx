@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import DownArrow from '../../../HOC/Icons/DownArrow'
-import SearchInput from '../../../HOC/SearchInput/SearchInput'
-import ToogleSwitch from '../../../HOC/ToogleSwitch/ToogleSwitch'
-import ScreenLayout from '../../../Layout/ScreenLayout/ScreenLayout'
-import Button from '../../../HOC/Button/Button'
+import SearchInput from '../../HOC/SearchInput/SearchInput'
+import ToogleSwitch from '../../HOC/ToogleSwitch/ToogleSwitch'
+import ScreenLayout from '../../Layout/ScreenLayout/ScreenLayout'
+import Button from '../../HOC/Button/Button'
 
 const SearchSection = () => {
   const [activeOption, setActiveOption] = useState('rocket')

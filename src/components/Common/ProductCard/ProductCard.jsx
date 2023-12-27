@@ -1,8 +1,21 @@
-import React from 'react'
-
 const ProductCard = () => {
   return (
-    <div>ProductCard</div>
+    <div className="product-card-1 cursor-pointer w-full flex flex-col gap-4 rounded aspect-video p-6 tracking-widest">
+      <h1 className="text-2xl">Falcone 1</h1>
+      <div className="flex gap-6 text-gray-200">
+        <span>Liquid Oxygen</span>
+        <span>RP-1 Kerosene</span>
+      </div>
+      <div className="flex gap-6 text-gray-200">
+        <span>$6.7M</span>
+        <span>-</span>
+        <span>73 Feet</span>
+        <span>-</span>
+        <span>30.1KG</span>
+      </div>
+      <span className="bg-green-600 w-fit text-sm px-2 py-1 rounded-md">ACTIVE</span>
+      <p>Country : <b>United States</b></p>
+    </div>
   )
 }
 

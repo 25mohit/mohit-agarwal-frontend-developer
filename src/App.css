@@ -52,3 +52,6 @@
 .search-pannel > input:nth-child(1){
     width: 40%;
 }
+.product-card-1{
+    background: linear-gradient(120deg, #1C3486, #9C3D58);
+}
