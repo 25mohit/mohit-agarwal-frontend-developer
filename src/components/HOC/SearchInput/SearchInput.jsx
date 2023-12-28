@@ -7,15 +7,13 @@ const SearchInput = ({ setFilterOption, filterOption }) => {
     return utcTimestamp;
   };
 
-  const handleDateChange = (e) => {
+  const handleDateChange = () => {
     const utcTimestamp = getCurrentUTCTimestamp();
     setFilterOption({ ...filterOption, 'original_launch': utcTimestamp });
   };
 
-  console.log("filterOption", filterOption);
-
   return (
-    <div className='search-pannel p-4 flex items-center justify-evenly'>
+    <div className='search-pannel flex items-center justify-evenly'>
         {/* <input type="text" placeholder={`${currentState} name`}/>
         <span className="text-3xl select-none">/</span> */}
         <select name="" id="" className="input" style={{fontSize:'1.5rem', width:'fit-content'}} onChange={e => setFilterOption({...filterOption, 'status': e.target.value})}>
