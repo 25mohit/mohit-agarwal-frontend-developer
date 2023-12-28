@@ -3,14 +3,26 @@
     padding: 0 var(--padding-x);
 }
 .screen-layout{
-    padding: 0 var(--padding-x);
+    padding: 1rem var(--padding-x);
+    min-height: 100vh;
 }
 .button{
     background-color: #88a9c157;
 }
+.banner-section{
+    display: flex;
+    flex-wrap: wrap;
+}
+.banner-section > div:nth-child(1){
+    width: 70%;
+}
+.banner-section .hero-image{
+    width: 30%;
+}
 .banner-img-container{
     height: 100vh;
     width: 100vw;
+    padding: 1rem var(--padding-x-mobile);
     padding-bottom: 2rem;
 }
 .banner-img-container{
@@ -23,7 +35,7 @@
     background-attachment: fixed;
 }
 .search-pannel{
-    width: 80vh;
+    width: 42vw;
     height: 5rem;
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.247);
@@ -52,8 +64,20 @@
 .search-pannel > input:nth-child(1){
     width: 40%;
 }
+.product-content{
+    width: 70%;
+}
 .product-card-1{
     background: linear-gradient(120deg, #1C3486, #9C3D58);
+    transition: 0.5s;
+    width: 32%;
+    display: flex;
+    min-width: 450px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+.product-card-1:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
 }
 .pagination .pg-bt {
     width: 3rem;
@@ -65,4 +89,44 @@
     color: rgba(255, 255, 255, 1);
     transform: translateY(-0.5rem);
     transition: 0.6s;
+}
+.product-grid{
+    /* background-color: red; */
+    gap: 1.28rem;
+    flex-wrap: wrap;
+}
+@media screen and (max-width: 1064px) {
+    .product-grid{
+        justify-content: center;
+    }
+    .product-content{
+        width: 100%;
+    }
+    .banner-section{
+        padding-top: var(--navbar-height);
+    }
+    .banner-section > div:nth-child(1){
+        width: 100%;
+    }
+    .banner-section .hero-image{
+        width: 30%;
+    }
+    .search-pannel{
+        width: 60vw;
+    }
+}
+@media screen and (max-width: 497px) {
+    .product-card-1{
+        min-width: 90vw;
+    }
+    .screen-layout{
+        padding: 1rem var(--padding-x-mobile);
+        min-height: 100vh;
+    }
+    .search-pannel{
+        width: 83vw;
+    }
+    .navbar{
+        padding: 0 var(--padding-x-mobile);
+    }
 }

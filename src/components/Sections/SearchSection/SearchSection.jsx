@@ -12,7 +12,7 @@ const SearchSection = () => {
         <div className="banner-img-container flex-col flex items-center justify-center">
           <div className='flex flex-col gap-6'>
             <ToogleSwitch currentState={activeOption} changeState={setActiveOption}/>
-            <div className='flex gap-10'>
+            <div className='flex gap-10 flex-wrap'>
               <SearchInput currentState={activeOption}/>
               <Button>Search</Button>
             </div>

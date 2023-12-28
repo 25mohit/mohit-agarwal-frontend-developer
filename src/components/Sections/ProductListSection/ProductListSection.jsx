@@ -35,9 +35,9 @@ const ProductListSection = () => {
     <ScreenLayout>
       <div className="list-ui flex flex-col gap-6 max-w-full">
         <nav>
-          <ToogleSwitch currentState={activeOption} />
+          <ToogleSwitch currentState={activeOption} changeState={setactiveOption}/>
         </nav>
-        <div className='flex flex-col gap-6 w-3/5'>
+        <div className='product-content flex flex-col gap-6'>
           <h1 className='text-5xl border-b-2 border-orange-400'>Falcon 1 Rocket</h1>
           <p className='tracking-widest	leading-8 text-gray-400'>The Falcon 1 was an expendable launch system privately developed and manufactured
 by SpaceX during 2006-2009. On 28 September 2008, Falcon 1 became the first
@@ -45,7 +45,7 @@ privately-developed liquid-fuel launch vehicle to go into orbit around the Earth
         <Button>View Detail</Button>
         </div>
         <Pagination itemPerPage={itemPerPage} setStartIndex={setStartIndex} data={rocketData} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
-        <section className="flex gap-6">
+        <section className="flex flex-wrap flex-row product-grid">
           {
             rocketData?.map((data, inde) => <ProductCard key={inde} data={data} ind={inde}/>)
           }
