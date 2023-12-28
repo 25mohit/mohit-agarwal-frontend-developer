@@ -14,7 +14,7 @@ const ProductListSection = () => {
   const [rocketList, setRocketList] = useState([])
   const [showInfoModal, setShowInfoModal] = useState(false)
   const [rocketData, setRocketData] = useState()
-
+  const [rocketID, setRocketID] = useState(null)
   let itemPerPage = 3
   
   useEffect(() => {
@@ -34,7 +34,7 @@ const ProductListSection = () => {
   console.log("rocketList", rocketList, rocketData);
   return (
     <ScreenLayout>
-      { showInfoModal && <InfoModal setShowInfoModal={setShowInfoModal}/> }
+      { showInfoModal && <InfoModal rocketID={rocketID} setShowInfoModal={setShowInfoModal}/> }
       <div className="list-ui flex flex-col gap-6 max-w-full">
         <nav>
           <ToogleSwitch currentState={activeOption} changeState={setactiveOption}/>
@@ -47,7 +47,8 @@ const ProductListSection = () => {
         <Pagination itemPerPage={itemPerPage} setStartIndex={setStartIndex} data={rocketData} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
         <section className="flex flex-wrap flex-row product-grid">
           {
-            rocketData?.map((data, inde) => <ProductCard key={inde} data={data} handeModal={setShowInfoModal}/>)
+            rocketData?.map((data, inde) => 
+              <ProductCard key={inde} data={data} handeModal={setShowInfoModal} setRocketID={setRocketID}/>)
           }
         </section>
       </div>

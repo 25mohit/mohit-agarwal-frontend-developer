@@ -1,24 +1,39 @@
-const InfoModal = ({ setShowInfoModal }) => {
+import { useEffect, useState } from "react"
+import { getSingleRocketByRocketId } from "../../../API"
+import CurrencyConverter from "../CurrencyConverter/CurrencyConverter"
+import Tooltip from "../../HOC/Tooltip/Tooltip"
+import Button from "../../HOC/Button/Button"
+
+const InfoModal = ({ setShowInfoModal, rocketID }) => {
+
+  const [modalData, setModalData] = useState({})
+
+  useEffect(() => {
+    if(rocketID !==null){
+      getSingleRocketByRocketId(rocketID, setModalData)
+    }
+  },[rocketID])
+
   return (
     <div className="fixed z-10 flex items-center justify-center w-full h-full top-0 left-0 info-modal" onClick={() => setShowInfoModal(false)}>
-        <div className="inner rounded-2xl p-8 flex flex-col gap-3" onClick={e => e.stopPropagation()}>
-          <section className="flex gap-4">
+        <div className="inner rounded-2xl p-8 flex flex-col gap-3 cursor-default" onClick={e => e.stopPropagation()}>
+          <section className="flex gap-4 modal-stats-section">
             <div className="w-3/5 flex flex-col">
               <div className="flex flex-col justify-between h-full">
                 <div className="flex flex-col gap-5">
-                  <h1 className="text-4xl">Falcone 1 Rocket</h1>
-                  <p className="text-sm text-gray-600 leading-6">The Falcon 1 was an expendable launch system privately developed and manufactured by SpaceX during 2006-2009. On 28 September 2008, Falcon1 became the first privately-developed liquid-fuel launch vehicle to go into orbit around the Earth."</p>
+                  <h1 className="text-4xl">{modalData?.rocket_name}</h1>
+                  <p className="text-sm text-gray-200 leading-6">{modalData?.description}</p>
                 </div>
-                <div className="text-gray-500 text-md flex flex-col gap-1">
-                  <p>Republic of the Marshall</p>
+                <div className="text-gray-200 text-md flex flex-col gap-1">
+                  <p>{modalData?.country}</p>
                   <div className="flex gap-7">
-                    <p>$67,00,000</p>
-                    <p>03-Jul-2023</p>
-                    <p>2 Stage</p>
+                    <p><Tooltip content="Project Cost Per Launch"><CurrencyConverter amount={modalData?.cost_per_launch}/></Tooltip></p>
+                    <p><Tooltip content="First Flight Date">{modalData?.first_flight}</Tooltip></p>
+                    <p>{modalData?.stages} Stage</p>
                   </div>
                   <div className="flex justify-between">
-                    <p>P : Low Earth Orbit</p>
-                    <p className="text-white"><b>40%</b></p>
+                    <p className="capitalize"><Tooltip content="Rocket Leg's Material">{modalData?.landing_legs?.material}</Tooltip></p>
+                    <p className="text-white"><Tooltip content="Project Success Rate"><b>{modalData?.success_rate_pct}%</b></Tooltip></p>
                   </div>
                 </div>
               </div>
@@ -26,33 +41,71 @@ const InfoModal = ({ setShowInfoModal }) => {
             <div className="w-2/5 flex flex-col gap-4">
               <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9ja2V0fGVufDB8fDB8fHww" alt="" />
               <div className="flex gap-2 img-container">
-                <img className="rounded" src="https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9ja2V0fGVufDB8fDB8fHww" alt="" />
-                <img className="rounded" src="https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9ja2V0fGVufDB8fDB8fHww" alt="" />
-                <img className="rounded" src="https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9ja2V0fGVufDB8fDB8fHww" alt="" />
+                {
+                  modalData?.flickr_images?.map((img, ind) => <img src={img} key={ind} alt={`Rocket Flicker Image ${ind}`}/>)
+                }
               </div>
             </div>
           </section>
-          <section className="my-2">
+
+          <section className="my-2 modal-stats-section">
             <h3 className="text-sm tracking-widest">ENGINES</h3>
             <div className="flex gap-6 flex-wrap">
-              <span>Engine Loss : 0</span>
-              <span>ISP : Sea Level = 267 / Vacuum = 304</span>
+              <Tooltip content="Maximun Loss"><span>Loss : {modalData?.engines?.engine_loss_max}</span></Tooltip>
+              <span className="flex">ISP :&nbsp;
+                <Tooltip content="Engine ISP Sea Level"> {modalData?.engines?.isp?.sea_level}&nbsp;</Tooltip> / 
+                <Tooltip content="Engine ISP Vacuum">&nbsp;{modalData?.engines?.isp?.vacuum}</Tooltip>
+              </span>
+              <span><Tooltip></Tooltip>{modalData?.engines?.propellant_1}</span>
+              <span><Tooltip></Tooltip>{modalData?.engines?.propellant_2}</span>
+              <span className="flex">TSL : <Tooltip content={`Thrust Sea Level : ${modalData?.engines?.thrust_sea_level?.kN}kN / ${modalData?.engines?.thrust_sea_level?.lbf}lbf`} > &nbsp;{modalData?.engines?.thrust_sea_level?.kN} kN</Tooltip></span>
+              <span className="flex">TV : <Tooltip content={`Thrust Vacume : ${modalData?.engines?.thrust_vacuum?.kN}kN / ${modalData?.engines?.thrust_vacuum?.lbf}lbf`}> &nbsp;{modalData?.engines?.thrust_vacuum?.kN} kN</Tooltip></span>
+              <span className="flex">Type : <Tooltip content="Engine Type"> &nbsp;{modalData?.engines?.type}</Tooltip></span>
+              <span className="flex">Version : <Tooltip content="Engine Version"> &nbsp;{modalData?.engines?.version}</Tooltip></span>
             </div>
           </section>
-          <section className="my-2">
+
+          {modalData?.first_stage && Object.keys(modalData?.first_stage)?.length > 0 &&
+          <section className="my-2 modal-stats-section">
             <h3 className="text-sm tracking-widest">FIRST STAGE</h3>
             <div className="flex gap-6 flex-wrap">
-              <span>Engine Loss : 0</span>
-              <span>ISP : Sea Level = 267 / Vacuum = 304</span>
+              <span>Burn Time : {modalData?.first_stage?.burn_time_sec}</span>
+              <span>Cores : {modalData?.first_stage?.cores}</span>
+              <span>Engines : {modalData?.first_stage?.engines}</span>
+              <span>Fuel Amount : {modalData?.first_stage?.fuel_amount_tons}</span>
+              <span>TSL : {modalData?.first_stage?.thrust_sea_level?.kN}kN</span>
+              <span>Thrust Vacume : {modalData?.first_stage?.thrust_vacuum?.kN}kN</span>
             </div>
-          </section>
-          <section className="my-2">
+          </section>}
+
+          {modalData?.second_stage && Object.keys(modalData?.second_stage)?.length > 0 &&
+          <section className="my-2 modal-stats-section">
             <h3 className="text-sm tracking-widest">SECOND STAGE</h3>
             <div className="flex gap-6 flex-wrap">
-              <span>Engine Loss : 0</span>
-              <span>ISP : Sea Level = 267 / Vacuum = 304</span>
+              <span>Burn Time : {modalData?.second_stage?.burn_time_sec}</span>
+              <span>Engines : {modalData?.second_stage?.engines}</span>
+              <span>Fuel Amount : {modalData?.second_stage?.fuel_amount_tons}</span>
+              <span>Thrust : {modalData?.second_stage?.thrust?.kN}kN</span>
+              <span>Payload : {modalData?.second_stage?.payloads?.option_1}</span>
+              <span>
+                <Tooltip content={`Second Stage Payload Diameter : 
+                  ${modalData?.second_stage?.payloads?.composite_fairing?.diameter?.feet}Feet / 
+                  ${modalData?.second_stage?.payloads?.composite_fairing?.diameter?.meters}meters`}>
+                    D : {modalData?.second_stage?.payloads?.composite_fairing?.diameter?.feet}Feet
+                </Tooltip>
+              </span>
+              <span>
+                <Tooltip content={`Second Stage Payload Height : 
+                  ${modalData?.second_stage?.payloads?.composite_fairing?.height?.feet}Feet / 
+                  ${modalData?.second_stage?.payloads?.composite_fairing?.height?.meters}meters`}>
+                    H : {modalData?.second_stage?.payloads?.composite_fairing?.height?.feet}Feet
+                </Tooltip>
+              </span>
+              <span>{modalData?.success_rate_pct}%</span>
             </div>
-          </section>
+          </section>}
+
+          <Button><a href={modalData?.wikipedia} target="_blank">MORE INFO</a></Button>
         </div>
     </div>
   )

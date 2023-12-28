@@ -9,3 +9,13 @@ export const getAllRocket = (setValue) => {
             })
             .catch(err => console.log(err))
 }
+
+export const getSingleRocketByRocketId = (rocketID, setValue) => {
+    axios.get(`${BASE_URL}rockets/${rocketID}`)
+            .then(res => {
+                setValue(res?.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+}

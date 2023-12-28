@@ -213,15 +213,21 @@
 .info-modal .inner{
     background-color: rgba(255, 255, 255, 0.139);
     backdrop-filter: blur(25px);
-    width: 850px;
-    min-width: 850px;
-    min-height: 600px;
+    width: 70vw;
+    min-width: 70vw;
+    max-height: 85vh;
+    overflow: auto;
+    overflow-x: hidden;
     /* z-index: 10000 !important; */
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 .info-modal .inner .img-container img{
     width: 6rem;
     height: 5rem;
+}
+.modal-stats-section{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.594);
+    padding-bottom: 1rem;
 }
 .open-btn{
     font-size: 2rem;
