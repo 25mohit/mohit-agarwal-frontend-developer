@@ -1,5 +1,4 @@
 const CapsuleCard = ({ data }) => {
-    console.log("data", data);
   return (
     <div className="capsule-card p-4 flex flex-col gap-2 rounded-md cursor-pointer">
         <nav className="flex gap-2 items-center">

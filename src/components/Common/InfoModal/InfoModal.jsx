@@ -36,7 +36,7 @@ const InfoModal = ({ setShowInfoModal, rocketID }) => {
                   </div>
                   <div className="text-gray-200 text-md flex flex-col gap-1">
                     <p>{modalData?.country}</p>
-                    <div className="flex gap-7">
+                    <div className="flex flex-wrap gap-7">
                       <p><Tooltip content="Project Cost Per Launch"><CurrencyConverter amount={modalData?.cost_per_launch}/></Tooltip></p>
                       <p><Tooltip content="First Flight Date">{modalData?.first_flight}</Tooltip></p>
                       <p>{modalData?.stages} Stage</p>

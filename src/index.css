@@ -7,6 +7,7 @@
     --padding-x: 4rem;
     --padding-x-mobile: 1.5rem;
     font-family: 'Monda', sans-serif;
+    scroll-behavior: smooth;
 }
 input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;

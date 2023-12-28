@@ -20,15 +20,10 @@ const ProductListSection = () => {
   useEffect(() => {
     getAllRocket(setRocketList)
   },[])
-
-  // useEffect(() => {
-  //   setRocketData(rocketList)
-  // },[rocketList])
   
   useEffect(() => {
     const startIdx = (currentPage - 1) * itemPerPage;
     const endIdx = startIdx + itemPerPage;
-    // setStartIndex(startIdx);
     setRocketData(rocketList.slice(startIdx, endIdx));
     setSelectedCard(rocketList?.[0])
   }, [currentPage, itemPerPage, rocketList]);  
@@ -37,9 +32,6 @@ const ProductListSection = () => {
     <ScreenLayout>
       { showInfoModal && <InfoModal rocketID={rocketID} setShowInfoModal={setShowInfoModal}/> }
       <div className="list-ui flex flex-col gap-6 max-w-full">
-        {/* <nav>
-          <ToogleSwitch currentState={activeOption} changeState={setactiveOption}/>
-        </nav> */}
         <div className='product-content flex flex-col gap-6'>
           <h1 className='text-5xl w-fit border-b-2 border-orange-400'>{selectedCard?.rocket_name}</h1>
           <p className='tracking-widest	leading-8 text-gray-400'>{selectedCard?.description}</p>
