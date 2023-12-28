@@ -56,8 +56,8 @@ const InfoModal = ({ setShowInfoModal, rocketID }) => {
                 <Tooltip content="Engine ISP Sea Level"> {modalData?.engines?.isp?.sea_level}&nbsp;</Tooltip> / 
                 <Tooltip content="Engine ISP Vacuum">&nbsp;{modalData?.engines?.isp?.vacuum}</Tooltip>
               </span>
-              <span><Tooltip></Tooltip>{modalData?.engines?.propellant_1}</span>
-              <span><Tooltip></Tooltip>{modalData?.engines?.propellant_2}</span>
+              <span><Tooltip content="Engine's 1 Propellant">{modalData?.engines?.propellant_1}</Tooltip></span>
+              <span><Tooltip content="Engine's 2 Propellant">{modalData?.engines?.propellant_2}</Tooltip></span>
               <span className="flex">TSL : <Tooltip content={`Thrust Sea Level : ${modalData?.engines?.thrust_sea_level?.kN}kN / ${modalData?.engines?.thrust_sea_level?.lbf}lbf`} > &nbsp;{modalData?.engines?.thrust_sea_level?.kN} kN</Tooltip></span>
               <span className="flex">TV : <Tooltip content={`Thrust Vacume : ${modalData?.engines?.thrust_vacuum?.kN}kN / ${modalData?.engines?.thrust_vacuum?.lbf}lbf`}> &nbsp;{modalData?.engines?.thrust_vacuum?.kN} kN</Tooltip></span>
               <span className="flex">Type : <Tooltip content="Engine Type"> &nbsp;{modalData?.engines?.type}</Tooltip></span>
@@ -69,12 +69,12 @@ const InfoModal = ({ setShowInfoModal, rocketID }) => {
           <section className="my-2 modal-stats-section">
             <h3 className="text-sm tracking-widest">FIRST STAGE</h3>
             <div className="flex gap-6 flex-wrap">
-              <span>Burn Time : {modalData?.first_stage?.burn_time_sec}</span>
-              <span>Cores : {modalData?.first_stage?.cores}</span>
-              <span>Engines : {modalData?.first_stage?.engines}</span>
-              <span>Fuel Amount : {modalData?.first_stage?.fuel_amount_tons}</span>
-              <span>TSL : {modalData?.first_stage?.thrust_sea_level?.kN}kN</span>
-              <span>Thrust Vacume : {modalData?.first_stage?.thrust_vacuum?.kN}kN</span>
+              <span className="flex">Burn Time : <Tooltip content="Burn Time in sec">&nbsp;{modalData?.first_stage?.burn_time_sec}</Tooltip></span>
+              {modalData?.first_stage?.cores && <span className="flex">Cores : <Tooltip content="Total Cores Avaiable in First Stage">&nbsp;{modalData?.first_stage?.cores}</Tooltip></span>}
+              <span className="flex">Engines : <Tooltip content="Total no. of Engines in First Stage">&nbsp;{modalData?.first_stage?.engines}</Tooltip></span>
+              <span className="flex">Fuel Amount : <Tooltip content="Fuel Amount Consumption in Tons">&nbsp;{modalData?.first_stage?.fuel_amount_tons}</Tooltip></span>
+              <span className="flex">TSL : <Tooltip content={`Thrust Sea Level : ${modalData?.first_stage?.thrust_sea_level?.kN}kn / ${modalData?.first_stage?.thrust_sea_level?.lbf}lbf`}>&nbsp;{modalData?.first_stage?.thrust_sea_level?.kN}kN</Tooltip></span>
+              <span className="flex">Thrust Vacuum : <Tooltip content={`Thrust Volume : ${modalData?.first_stage?.thrust_vacuum?.kN}kn / ${modalData?.first_stage?.thrust_vacuum?.lbf}lbf`}>&nbsp;{modalData?.first_stage?.thrust_vacuum?.kN}kN</Tooltip></span>
             </div>
           </section>}
 
@@ -82,11 +82,11 @@ const InfoModal = ({ setShowInfoModal, rocketID }) => {
           <section className="my-2 modal-stats-section">
             <h3 className="text-sm tracking-widest">SECOND STAGE</h3>
             <div className="flex gap-6 flex-wrap">
-              <span>Burn Time : {modalData?.second_stage?.burn_time_sec}</span>
-              <span>Engines : {modalData?.second_stage?.engines}</span>
-              <span>Fuel Amount : {modalData?.second_stage?.fuel_amount_tons}</span>
-              <span>Thrust : {modalData?.second_stage?.thrust?.kN}kN</span>
-              <span>Payload : {modalData?.second_stage?.payloads?.option_1}</span>
+              <span className="flex">Burn Time : <Tooltip content="Burn Tim in sec">&nbsp;{modalData?.second_stage?.burn_time_sec}</Tooltip></span>
+              <span className="flex">Engines : <Tooltip content="Total no. of Engines in Second Stage">&nbsp;{modalData?.second_stage?.engines}</Tooltip></span>
+              <span className="flex">Fuel Amount : <Tooltip content="Fuel Amount Consumption in Tons">&nbsp;{modalData?.second_stage?.fuel_amount_tons}</Tooltip></span>
+              <span className="flex">Thrust : <Tooltip content={`Thrust : ${modalData?.second_stage?.thrust?.kN}kn / ${modalData?.second_stage?.thrust?.lbf}lbf`}>&nbsp;{modalData?.second_stage?.thrust?.kN}kN</Tooltip></span>
+              <span className="flex">Payload : <Tooltip content="Payload Option Name">&nbsp;{modalData?.second_stage?.payloads?.option_1}</Tooltip></span>
               <span>
                 <Tooltip content={`Second Stage Payload Diameter : 
                   ${modalData?.second_stage?.payloads?.composite_fairing?.diameter?.feet}Feet / 
@@ -101,7 +101,7 @@ const InfoModal = ({ setShowInfoModal, rocketID }) => {
                     H : {modalData?.second_stage?.payloads?.composite_fairing?.height?.feet}Feet
                 </Tooltip>
               </span>
-              <span>{modalData?.success_rate_pct}%</span>
+              <span><Tooltip content="Project Success Rate">{modalData?.success_rate_pct}%</Tooltip></span>
             </div>
           </section>}
 
