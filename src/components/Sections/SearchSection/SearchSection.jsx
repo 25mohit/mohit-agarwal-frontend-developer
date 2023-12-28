@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import SearchInput from '../../HOC/SearchInput/SearchInput'
 import ScreenLayout from '../../Layout/ScreenLayout/ScreenLayout'
 import Button from '../../HOC/Button/Button'
 import { getCapsuleByFilter } from '../../../API'
+import CapsuleCard from '../../Common/CapsuleCard/CapsuleCard'
 
 const SearchSection = () => {
   const [filterOption, setFilterOption] = useState({
@@ -16,7 +17,6 @@ const SearchSection = () => {
     getCapsuleByFilter(filterOption, setFilteredData)
   }
 
-  console.log("filteredData", filteredData);
   return (
     <ScreenLayout noPadding={true}>
         <div className="banner-img-container flex-col flex items-center justify-center">
@@ -24,6 +24,17 @@ const SearchSection = () => {
               <SearchInput setFilterOption={setFilterOption} filterOption={filterOption}/>
               <Button onClick={onSearchHandler}>Search</Button>
           </div>
+          {
+            filteredData !== null && (filteredData?.length > 0 ? 
+              <div className="capsules-grid flex gap-4 justify-center flex-wrap mt-6">
+                {
+                  filteredData?.map((data, ind) => <CapsuleCard data={data} key={ind}/>)
+                }
+            </div> :
+            <div>
+              <span>No Data Avaiable</span>
+            </div>)
+          }
         </div>
     </ScreenLayout>
   )
