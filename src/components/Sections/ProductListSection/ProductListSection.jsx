@@ -31,7 +31,6 @@ const ProductListSection = () => {
     }
   },[currentPage, startIndex])
 
-  console.log("rocketList", rocketList, rocketData);
   return (
     <ScreenLayout>
       { showInfoModal && <InfoModal rocketID={rocketID} setShowInfoModal={setShowInfoModal}/> }
@@ -42,7 +41,7 @@ const ProductListSection = () => {
         <div className='product-content flex flex-col gap-6'>
           <h1 className='text-5xl w-fit border-b-2 border-orange-400'>{rocketData?.[0]?.rocket_name}</h1>
           <p className='tracking-widest	leading-8 text-gray-400'>{rocketData?.[0]?.description}</p>
-        <Button>View Detail</Button>
+        <Button><a href={rocketData?.[0]?.wikipedia} target='_blank'>View Detail</a></Button>
         </div>
         <Pagination itemPerPage={itemPerPage} setStartIndex={setStartIndex} data={rocketData} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
         <section className="flex flex-wrap flex-row product-grid">

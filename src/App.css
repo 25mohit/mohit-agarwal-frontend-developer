@@ -71,28 +71,29 @@
 .search-pannel > span{
     color: rgba(255, 255, 255, 0.342);
 }
-.search-pannel > input{
+.search-pannel > .input{
     background-color: transparent;
     width: 15%;
     font-size: 2rem;
+    color: rgba(255, 255, 255, 0.7);
 }
-.search-pannel > input::placeholder{
+.search-pannel > .input::placeholder{
     color: rgba(255, 255, 255, 0.7);
     font-size: 1.6rem;
 }
-.search-pannel > input:focus{
+.search-pannel > .input:focus{
     outline: none;
 }
-.search-pannel:has(input:focus){
+.search-pannel:has(.input:focus){
     transform: scale(1.1);
     transition: 0.3s;
 }
-.search-pannel > input:nth-child(1){
+/* .search-pannel > .input:nth-child(1){
     width: 40%;
 }
 .product-content{
     width: 70%;
-}
+} */
 .product-card-1{
     background: linear-gradient(120deg, #1C3486, #9C3D58);
     transition: 0.5s;

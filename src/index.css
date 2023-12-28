@@ -8,3 +8,6 @@
     --padding-x-mobile: 1.5rem;
     font-family: 'Monda', sans-serif;
 }
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+  }
