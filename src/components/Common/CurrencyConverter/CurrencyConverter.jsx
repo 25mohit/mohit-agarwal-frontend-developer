@@ -1,7 +1,7 @@
-const CurrencyConverter = () => {
+const CurrencyConverter = ({amount}) => {
   return (
-    new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
-        67000000,
+    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'INR', minimumFractionDigits:0, maximumFractionDigits:0 }).format(
+        amount || 0,
       )
   )
 }
