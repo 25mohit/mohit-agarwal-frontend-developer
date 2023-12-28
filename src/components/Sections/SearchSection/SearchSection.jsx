@@ -5,6 +5,7 @@ import Button from '../../HOC/Button/Button'
 import { getCapsuleByFilter } from '../../../API'
 import CapsuleCard from '../../Common/CapsuleCard/CapsuleCard'
 import Pagination from '../../HOC/Pagination/Pagination'
+import Loading from '../../HOC/Loading/Loading'
 
 const SearchSection = () => {
   const [filterOption, setFilterOption] = useState({
@@ -17,13 +18,18 @@ const SearchSection = () => {
   const [capsuleLists, setCapsuleLists] = useState([])
   let itemsPerPage = 4;
   const [filteredData, setFilteredData] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   const onSearchHandler = () => {
+    setLoading(true)
     getCapsuleByFilter(filterOption, setFilteredData)
   }
   
     useEffect(() => {
-      if(filteredData!== null) setCapsuleLists(filteredData)
+      if(filteredData!== null){
+        setCapsuleLists(filteredData)
+        setLoading(false)
+      }
     },[filteredData])
   
     useEffect(() => {
@@ -32,7 +38,6 @@ const SearchSection = () => {
       }
     },[currentPage, startIndex, filteredData])
     
-  console.log("capsuleLists", capsuleLists, filteredData);
   return (
     <ScreenLayout noPadding={true}>
         <div className="banner-img-container flex-col flex items-center justify-center">
@@ -54,6 +59,7 @@ const SearchSection = () => {
               <span>No Data Avaiable</span>
             </div>)
           }
+          {loading && <Loading />}
         </div>
     </ScreenLayout>
   )

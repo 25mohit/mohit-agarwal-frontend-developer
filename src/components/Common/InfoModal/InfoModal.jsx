@@ -3,10 +3,12 @@ import { getSingleRocketByRocketId } from "../../../API"
 import CurrencyConverter from "../CurrencyConverter/CurrencyConverter"
 import Tooltip from "../../HOC/Tooltip/Tooltip"
 import Button from "../../HOC/Button/Button"
+import Loading from "../../HOC/Loading/Loading"
 
 const InfoModal = ({ setShowInfoModal, rocketID }) => {
 
   const [modalData, setModalData] = useState({})
+  const [currentImage, setCurrentImage] = useState('')
 
   useEffect(() => {
     if(rocketID !==null){
@@ -14,11 +16,17 @@ const InfoModal = ({ setShowInfoModal, rocketID }) => {
     }
   },[rocketID])
 
+  useEffect(() => {
+    if(modalData){
+      setCurrentImage(modalData?.flickr_images?.[0])
+    }
+  },[modalData])
+
   return (
     <div className="fixed z-10 flex items-center justify-center w-full h-full top-0 left-0 info-modal" onClick={() => setShowInfoModal(false)}>
-        <div className="inner rounded-2xl p-8 flex-col gap-3 cursor-default" onClick={e => e.stopPropagation()}>
-          <button className="close">X</button>
-          <div className="scrollable">
+        <div className="inner justify-center rounded-2xl p-8 flex-col gap-3 cursor-default" onClick={e => e.stopPropagation()}>
+          <button className="close" onClick={() => setShowInfoModal(false)}>X</button>
+          {modalData && Object.keys(modalData)?.length > 0 ? <div className="scrollable">
             <section className="flex gap-4 modal-stats-section">
               <div className="w-3/5 flex flex-col full-on-mobile">
                 <div className="flex flex-col justify-between h-full">
@@ -41,10 +49,10 @@ const InfoModal = ({ setShowInfoModal, rocketID }) => {
                 </div>
               </div>
               <div className="w-2/5 flex flex-col gap-4 full-on-mobile">
-                <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9ja2V0fGVufDB8fDB8fHww" alt="" />
+                <img src={currentImage} alt="SpaceX Rocket Image" />
                 <div className="flex gap-2 img-container">
                   {
-                    modalData?.flickr_images?.map((img, ind) => <img src={img} key={ind} alt={`Rocket Flicker Image ${ind}`}/>)
+                    modalData?.flickr_images?.map((img, ind) => <img onClick={() => setCurrentImage(img)} src={img} key={ind} alt={`Rocket Flicker Image ${ind}`} className="cursor-pointer"/>)
                   }
                 </div>
               </div>
@@ -108,7 +116,8 @@ const InfoModal = ({ setShowInfoModal, rocketID }) => {
             </section>}
 
             <Button><a href={modalData?.wikipedia} target="_blank">MORE INFO</a></Button>
-          </div>
+          </div> :
+          <Loading />}
         </div>
     </div>
   )

@@ -1,16 +1,15 @@
 import Tooltip from "../../HOC/Tooltip/Tooltip"
 import CurrencyConverter from "../CurrencyConverter/CurrencyConverter"
 
-const ProductCard = ({ data, handeModal,setRocketID }) => {
+const ProductCard = ({ ind, data, handeModal,setRocketID, setSelectedCard }) => {
 
   const handleOpen = (rocketID) => {
-    console.log(rocketID);
     handeModal(true)
     setRocketID(rocketID)
   }
 
   return (
-    <div className="product-card-1 cursor-pointer flex-col gap-4 rounded aspect-video p-6 tracking-widest">
+    <div className={`product-card a${ind+1} cursor-pointer flex-col gap-4 rounded aspect-video p-6 tracking-widest`} onClick={() => setSelectedCard(data)}>
       <nav className="flex justify-between  items-center">
         <h1 className="text-2xl">{`${data?.rocket_name}`}</h1>
         <button className="open-btn" onClick={() => handleOpen(data?.rocket_id)}>&gt;</button>

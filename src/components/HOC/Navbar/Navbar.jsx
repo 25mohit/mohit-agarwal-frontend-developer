@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <nav className="navbar fixed w-screen flex items-center justify-between text-white">
       <img src={spaceXLogo} alt="SpaceX Logo" loading="lazy" className="w-72 cursor-pointer"/>
-      <p>ad</p>
+      {/* <p>ad</p> */}
     </nav>
   )
 }

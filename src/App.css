@@ -93,17 +93,25 @@
 .product-content{
     width: 70%;
 } */
-.product-card-1{
-    background: linear-gradient(120deg, #1C3486, #9C3D58);
+.product-card{
     transition: 0.5s;
     width: 32%;
     display: flex;
     min-width: 450px;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
-.product-card-1:hover{
+.product-card:hover{
     transform: scale(1.1);
     transition: 0.5s;
+}
+.product-card.a1{
+    background: linear-gradient(120deg, #1C3486, #9C3D58);
+}
+.product-card.a2{
+    background: linear-gradient(120deg, #A34155, #FFB6CB);
+}
+.product-card.a3{
+    background: linear-gradient(120deg, #1c8668, #77a6ca);
 }
 .pagination.dark{
     background-color: rgba(45, 45, 44, 0.89);
@@ -181,6 +189,7 @@
     min-width: 60vw;
     display: flex;
     max-height: 85vh;
+    min-height: 70vh;
     /* z-index: 10000 !important; */
     position: relative;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
@@ -195,13 +204,22 @@
     top: -1.5rem;
     right: -1.5rem;
 }
+.info-modal .inner .close:hover{
+    background-color: rgba(255, 255, 255, 0.398);
+    /* color: gray; */
+    transition: 0.6s;
+}
 .info-modal .inner .scrollable{
     overflow: auto;
     overflow-x: hidden;
 }
+.info-modal .inner .img-container{
+    overflow-x: auto;
+}
 .info-modal .inner .img-container img{
     width: 6rem;
     height: 5rem;
+    object-fit: contain;
 }
 .modal-stats-section{
     border-bottom: 1px solid rgba(255, 255, 255, 0.594);
@@ -240,7 +258,7 @@
     }
 }
 @media screen and (max-width: 497px) {
-    .product-card-1{
+    .product-card{
         min-width: 90vw;
     }
     .screen-layout{
@@ -282,4 +300,45 @@
     transition: 0.6s;
     box-shadow: 0 0 15px 2px rgba(255, 255, 255,0.6);
     z-index: 1;
+}
+.loading{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+}
+.loading .dots{
+    width: 1rem;
+    height: 1rem;
+    background-color: rgba(255, 255, 255, 0.74);
+    border-radius: 50%;
+    animation: animate 0.3s linear infinite alternate;
+}
+.loading .dots:nth-child(1){
+    /* animation: animate 0.6 linear infinite alternate; */
+    animation-delay: 0.1s;
+}
+.loading .dots:nth-child(2){
+    /* animation: animate 0.6 linear infinite alternate; */
+    animation-delay: 0.3s;
+}
+.loading .dots:nth-child(3){
+    /* animation: animate 0.6 linear infinite alternate; */
+    animation-delay: 0.5s;
+}
+.loading .dots:nth-child(4){
+    /* animation: animate 0.6 linear infinite alternate; */
+    animation-delay: 0.7s;
+}
+.loading .dots:nth-child(5){
+    /* animation: animate 0.6 linear infinite alternate; */
+    animation-delay: 0.9s;
+}
+@keyframes animate {
+    to{
+        transform: translateY(-2rem);
+        transition: 0.6s;
+    }
 }

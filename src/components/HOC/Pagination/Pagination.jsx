@@ -1,15 +1,15 @@
-const Pagination = ({ data, currentPage, setCurrentPage, setStartIndex , itemPerPage, dark }) => {
+const Pagination = ({ data, currentPage, setCurrentPage , itemPerPage, dark }) => {
   const totalItems = data.length;
   const totalPages = Math.ceil(totalItems / itemPerPage);
     const onPageChangeHandler = (no) => {
-        setStartIndex(no * itemPerPage )
+        // setStartIndex(no * itemPerPage )
         setCurrentPage(no + 1)
     }
     
     const handlePrevious = () => {
         if (currentPage > 1) {
           const newPage = currentPage - 1;
-          setStartIndex((newPage - 1) * itemPerPage);
+          // setStartIndex((newPage - 1) * itemPerPage);
           setCurrentPage(newPage);
         }
       };

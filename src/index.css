@@ -11,3 +11,22 @@
 input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
   }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  .scrollable::-webkit-scrollbar-track, .info-modal .inner .img-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-track {
+    background: black;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    cursor: pointer;
+  }
+  
