@@ -18,6 +18,32 @@
 }
 .banner-section .hero-image{
     width: 30%;
+    display: flex;
+    justify-content: center;
+    min-height: 100%;
+    animation: rocket 1s linear infinite;
+}
+.banner-section .hero-image .activated{
+    animation: activated 1s linear;
+}
+@keyframes activated {
+    100%{
+        transform: translateY(-100%);
+    }
+}
+@keyframes rocket {
+    0%{
+        transform: translateY(-3rem);
+    }
+    25%{
+        transform: translateY(-3rem);
+    }
+    75%{
+        transform: translateY(-2.5rem);
+    }
+    100%{
+        transform: translateY(-3rem);
+    }
 }
 .banner-img-container{
     height: 100vh;
@@ -101,15 +127,16 @@
 }
 .tooltip .content{
     display: none;
-    /* opacity: 0; */
     position: absolute;
     font-size: 0.8rem;
-    bottom: 130%;
+    top: -2.5rem;
     left: 50%;
     transform: translate(-50%);
     line-height: 16px;
     padding: 0.4rem 0.6rem;
+    user-select: none;
     white-space: nowrap;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     letter-spacing: 0;
     cursor: pointer;
     color: black;
@@ -128,6 +155,7 @@
     bottom: -0.5rem;
     z-index: -1;
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    
 }
 .tooltip:hover .content{
     display: block;
