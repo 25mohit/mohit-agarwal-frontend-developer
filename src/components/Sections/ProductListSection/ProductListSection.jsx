@@ -6,6 +6,7 @@ import ProductCard from '../../Common/ProductCard/ProductCard'
 import Pagination from '../../HOC/Pagination/Pagination'
 import { getAllRocket } from '../../../API'
 import InfoModal from '../../Common/InfoModal/InfoModal'
+import Stars from '../../HOC/Galaxy/Stars'
 
 const ProductListSection = () => {
   // const [activeOption, setactiveOption] = useState('rocket')
@@ -30,6 +31,7 @@ const ProductListSection = () => {
 
   return (
     <ScreenLayout>
+      <Stars />
       { showInfoModal && <InfoModal rocketID={rocketID} setShowInfoModal={setShowInfoModal}/> }
       <div className="list-ui flex flex-col gap-6 max-w-full">
         <div className='product-content flex flex-col gap-6'>

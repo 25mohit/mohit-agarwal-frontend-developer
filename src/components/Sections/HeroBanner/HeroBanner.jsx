@@ -4,6 +4,7 @@ import Button from '../../HOC/Button/Button'
 import rocketImage from "../../../assets/images/space-rocket.png"
 import Tooltip from '../../HOC/Tooltip/Tooltip'
 import Galaxy from '../../HOC/Galaxy/Galaxy'
+import Stars from '../../HOC/Galaxy/Stars'
 
 const HeroBanner = () => {
   const [rocketActivated, setRocketActivated] = useState(false)
@@ -16,6 +17,7 @@ const HeroBanner = () => {
   },[rocketActivated])
   return (
     <ScreenLayout showGalaxy={true}>
+      <Stars />
       <div className="banner-section justify-center items-center ">
         <div className="flex flex-col gap-6">
             <h1 className='text-white text-3xl tracking-widest flex flex-wrap gap-2'>You&nbsp;are&nbsp;just 
