@@ -1,5 +1,4 @@
 import ScreenLayout from '../../Layout/ScreenLayout/ScreenLayout'
-import ToogleSwitch from '../../HOC/ToogleSwitch/ToogleSwitch'
 import { useEffect, useState } from 'react'
 import Button from '../../HOC/Button/Button'
 import ProductCard from '../../Common/ProductCard/ProductCard'
@@ -9,7 +8,6 @@ import InfoModal from '../../Common/InfoModal/InfoModal'
 import Stars from '../../HOC/Galaxy/Stars'
 
 const ProductListSection = () => {
-  // const [activeOption, setactiveOption] = useState('rocket')
   const [currentPage, setCurrentPage] = useState(1)
   const [rocketList, setRocketList] = useState([])
   const [showInfoModal, setShowInfoModal] = useState(false)
@@ -37,7 +35,7 @@ const ProductListSection = () => {
         <div className='product-content flex flex-col gap-6'>
           <h1 className='text-5xl w-fit border-b-2 border-orange-400'>{selectedCard?.rocket_name}</h1>
           <p className='tracking-widest	leading-8 text-gray-400'>{selectedCard?.description}</p>
-        <Button><a href={selectedCard?.wikipedia} target='_blank'>View Detail</a></Button>
+          <Button><a href={selectedCard?.wikipedia} target='_blank'>View Detail</a></Button>
         </div>
         <Pagination itemPerPage={itemPerPage} data={rocketList} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
         <section className="flex flex-wrap flex-row product-grid">

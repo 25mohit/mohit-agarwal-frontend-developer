@@ -15,10 +15,12 @@ const SearchSection = ({ manageObserver }) => {
   })
   const [currentPage, setCurrentPage] = useState(1)
   const [capsuleLists, setCapsuleLists] = useState([])
-  let itemsPerPage = 4;
   const [filteredData, setFilteredData] = useState(null)
   const [loading, setLoading] = useState(false)
+
   const searchSectionRef = useRef(null);
+
+  let itemsPerPage = 4;
 
   useEffect(() => {
     const handleIntersection = (entries) => {
@@ -28,13 +30,11 @@ const SearchSection = ({ manageObserver }) => {
     };
 
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.75, // Adjust this value to control when the section is considered visible
+      threshold: 0.75,
     });
 
-    // Start observing the target element (the SearchSection in this case)
     observer.observe(searchSectionRef.current);
 
-    // Cleanup: Disconnect the observer when the component unmounts
     return () => {
       observer.disconnect();
     };

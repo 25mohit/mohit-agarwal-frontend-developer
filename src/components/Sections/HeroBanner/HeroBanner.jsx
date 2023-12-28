@@ -3,11 +3,13 @@ import ScreenLayout from '../../Layout/ScreenLayout/ScreenLayout'
 import Button from '../../HOC/Button/Button'
 import rocketImage from "../../../assets/images/space-rocket.png"
 import Tooltip from '../../HOC/Tooltip/Tooltip'
-import Galaxy from '../../HOC/Galaxy/Galaxy'
 import Stars from '../../HOC/Galaxy/Stars'
+import MOONDATA from "../../../MOON_DATA.json"
 
 const HeroBanner = () => {
   const [rocketActivated, setRocketActivated] = useState(false)
+  const [newThought, setNewThought] = useState(MOONDATA?.space_facts?.[Math.round(Math.random() * MOONDATA?.space_facts?.length)]?.fact)
+
   useEffect(() => {
     if(rocketActivated){
       setTimeout(() => {
@@ -15,16 +17,18 @@ const HeroBanner = () => {
       },1200)
     }
   },[rocketActivated])
+  
+  const onRefreshHandler = () => {
+    setNewThought(MOONDATA?.space_facts?.[Math.round(Math.random()* MOONDATA?.space_facts?.length)]?.fact)
+  }
+
   return (
     <ScreenLayout showGalaxy={true}>
       <Stars />
       <div className="banner-section justify-center items-center ">
         <div className="flex flex-col gap-6">
-            <h1 className='text-white text-3xl tracking-widest flex flex-wrap gap-2'>You&nbsp;are&nbsp;just 
-              <Tooltip content="This is the total distance from earth to moon"><b>3,84,400</b></Tooltip>
-              <small className='text-sm'>km</small> away&nbsp;from</h1>
-            <h1 className='text-4xl font-semibold tracking-widest'>MOON</h1>
-            <Button>refresh knowledge</Button>
+            <h1 className='text-white text-3xl tracking-widest'>{newThought}</h1>
+            <Button onClick={onRefreshHandler}>refresh knowledge</Button>
             <p className='leading-10'>American spacecraft manufacturer, launch service provider, defense contractor and satellite communications company headquartered in Hawthorne, California</p>
         </div>
         <div className="hero-image">

@@ -117,7 +117,8 @@ const InfoModal = ({ setShowInfoModal, rocketID }) => {
 
             <Button><a href={modalData?.wikipedia} target="_blank">MORE INFO</a></Button>
           </div> :
-          <Loading />}
+          <Loading />
+          }
         </div>
     </div>
   )
