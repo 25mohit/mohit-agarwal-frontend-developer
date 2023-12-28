@@ -1,5 +1,6 @@
-const Pagination = ({ data, currentPage, setCurrentPage, setStartIndex , itemPerPage}) => {
-
+const Pagination = ({ data, currentPage, setCurrentPage, setStartIndex , itemPerPage, dark }) => {
+  const totalItems = data.length;
+  const totalPages = Math.ceil(totalItems / itemPerPage);
     const onPageChangeHandler = (no) => {
         setStartIndex(no * itemPerPage )
         setCurrentPage(no + 1)
@@ -14,18 +15,24 @@ const Pagination = ({ data, currentPage, setCurrentPage, setStartIndex , itemPer
       };
 
     const onNextHandler = () => {
-        if(currentPage < data?.length){
+        if(currentPage < totalPages){
             onPageChangeHandler(currentPage)
         }
     }
     
   return (
     <div className="flex justify-end overflow-x-auto">
-        <div className="pagination flex justify-between border rounded">
+        <div className={`pagination flex justify-between border rounded ${dark && 'dark'}`}>
             <button className="pg-bt" onClick={handlePrevious}>&lt;</button>
-            {
-                data?.map((_, index) => <button className={`pg-bt ${currentPage === index+1 ? 'text-white' : 'text-gray-500'}`} onClick={() => onPageChangeHandler(index)}>{index+1}</button>)
-            }
+            {[...Array(totalPages)].map((_, index) => (
+              <button
+                key={index}
+                className={`pg-bt ${currentPage === index + 1 ? 'text-white' : 'text-gray-500'}`}
+                onClick={() => onPageChangeHandler(index)}
+              >
+                {index + 1}
+              </button>
+            ))}
             <button className="pg-bt" onClick={onNextHandler}>&gt;</button>
         </div>
     </div>

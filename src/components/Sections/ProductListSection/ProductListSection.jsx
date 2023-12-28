@@ -13,7 +13,7 @@ const ProductListSection = () => {
   const [startIndex, setStartIndex] = useState(0)
   const [rocketList, setRocketList] = useState([])
   const [showInfoModal, setShowInfoModal] = useState(false)
-  const [rocketData, setRocketData] = useState()
+  const [rocketData, setRocketData] = useState([])
   const [rocketID, setRocketID] = useState(null)
   let itemPerPage = 3
   
@@ -26,10 +26,11 @@ const ProductListSection = () => {
   },[rocketList])
   
   useEffect(() => {
-    if(currentPage !== null){
-      setRocketData(rocketList?.slice(startIndex, startIndex + itemPerPage))
-    }
-  },[currentPage, startIndex])
+    const startIdx = (currentPage - 1) * itemPerPage;
+    const endIdx = startIdx + itemPerPage;
+    setStartIndex(startIdx);
+    setRocketData(rocketList.slice(startIdx, endIdx));
+  }, [currentPage, itemPerPage, rocketList]);  
 
   return (
     <ScreenLayout>
@@ -43,7 +44,7 @@ const ProductListSection = () => {
           <p className='tracking-widest	leading-8 text-gray-400'>{rocketData?.[0]?.description}</p>
         <Button><a href={rocketData?.[0]?.wikipedia} target='_blank'>View Detail</a></Button>
         </div>
-        <Pagination itemPerPage={itemPerPage} setStartIndex={setStartIndex} data={rocketData} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+        <Pagination itemPerPage={itemPerPage} setStartIndex={setStartIndex} data={rocketList} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
         <section className="flex flex-wrap flex-row product-grid">
           {
             rocketData?.map((data, inde) => 
