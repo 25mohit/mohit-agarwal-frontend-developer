@@ -204,4 +204,9 @@
     .navbar{
         padding: 0 var(--padding-x-mobile);
     }
+    @keyframes activated {
+        100%{
+            transform: translateY(-1000%);
+        }
+    }
 }

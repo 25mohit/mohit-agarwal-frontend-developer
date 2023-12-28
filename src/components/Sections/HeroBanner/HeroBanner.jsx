@@ -18,9 +18,9 @@ const HeroBanner = () => {
     <ScreenLayout>
       <div className="banner-section items-center justify-center">
           <div className="flex flex-col gap-6">
-              <h1 className='text-white text-3xl tracking-widest flex gap-2'>You are just 
+              <h1 className='text-white text-3xl tracking-widest flex flex-wrap gap-2'>You&nbsp;are&nbsp;just 
                 <Tooltip content="This is the total distance from earth to moon"><b>3,84,400</b></Tooltip>
-                <small className='text-sm'>km</small> away from</h1>
+                <small className='text-sm'>km</small> away&nbsp;from</h1>
               <h1 className='text-4xl font-semibold tracking-widest'>MOON</h1>
               <Button>refresh knowledge</Button>
               <p className='leading-10'>American spacecraft manufacturer, launch service provider, defense contractor and satellite communications company headquartered in Hawthorne, California</p>

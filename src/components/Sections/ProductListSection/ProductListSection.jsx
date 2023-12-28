@@ -4,12 +4,20 @@ import { useEffect, useState } from 'react'
 import Button from '../../HOC/Button/Button'
 import ProductCard from '../../Common/ProductCard/ProductCard'
 import Pagination from '../../HOC/Pagination/Pagination'
+import { getAllRocket } from '../../../API'
 
 const ProductListSection = () => {
   const [activeOption, setactiveOption] = useState('rocket')
   const [currentPage, setCurrentPage] = useState(1)
   const [startIndex, setStartIndex] = useState(0)
+  const [rocketList, setRocketList] = useState([])
   let itemPerPage = 3
+  
+  useEffect(() => {
+    getAllRocket(setRocketList)
+  },[])
+
+  console.log("rocketList", rocketList);
 
   const testData = [
     { rocketName: "Falcone 1"},
@@ -23,11 +31,11 @@ const ProductListSection = () => {
     { rocketName: "Falcone9"},
     { rocketName: "Falcone10"},
   ]
-  const [rocketData, setRocketData] = useState(testData)
+  const [rocketData, setRocketData] = useState(rocketList)
 
   useEffect(() => {
     if(currentPage !== null){
-      setRocketData(testData?.slice(startIndex, startIndex + itemPerPage))
+      setRocketData(rocketList?.slice(startIndex, startIndex + itemPerPage))
     }
   },[currentPage, startIndex])
 
@@ -38,7 +46,7 @@ const ProductListSection = () => {
           <ToogleSwitch currentState={activeOption} changeState={setactiveOption}/>
         </nav>
         <div className='product-content flex flex-col gap-6'>
-          <h1 className='text-5xl border-b-2 border-orange-400'>Falcon 1 Rocket</h1>
+          <h1 className='text-5xl w-fit border-b-2 border-orange-400'>Falcon 1 Rocket</h1>
           <p className='tracking-widest	leading-8 text-gray-400'>The Falcon 1 was an expendable launch system privately developed and manufactured
 by SpaceX during 2006-2009. On 28 September 2008, Falcon 1 became the first
 privately-developed liquid-fuel launch vehicle to go into orbit around the Earth.</p>
