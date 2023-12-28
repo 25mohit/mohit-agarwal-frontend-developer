@@ -1,6 +1,9 @@
-const Tooltip = () => {
+const Tooltip = props => {
   return (
-    <div>Tooltip</div>
+    <div className="tooltip ">
+      <span className="content rounded-lg">{props?.content}</span>
+      <>{props?.children}</>
+    </div>
   )
 }
 
