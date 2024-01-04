@@ -4,5 +4,6 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Assignment Deployed URL](https://mohit-agarwal-frontend-developer.vercel.app)
+- [Assignment Video URL](https://drive.google.com/file/d/1J5AR3Ji4IEG3GHFSbdDNjgPRKUcL8itU/view?usp=sharing)
+- [Video ZIP URL](https://drive.google.com/file/d/1jemFddg0snPVpghf-EDQOZEUksusgwGN/view?usp=sharing)
